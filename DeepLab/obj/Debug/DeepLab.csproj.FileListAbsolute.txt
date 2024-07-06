@@ -7,3 +7,14 @@ C:\Users\Martins\Documents\Visual Studio 2008\Projects\DeepLab\DeepLab\obj\Debug
 C:\Users\Martins\Documents\Visual Studio 2008\Projects\DeepLab\DeepLab\obj\Debug\DeepLab.exe
 C:\Users\Martins\Documents\Visual Studio 2008\Projects\DeepLab\DeepLab\obj\Debug\DeepLab.pdb
 C:\Users\Martins\Documents\Visual Studio 2008\Projects\DeepLab\DeepLab\bin\Debug\Asets\cell.png
+E:\dv\labyrinth\DeepLab\bin\Debug\Asets\cell.png
+E:\dv\labyrinth\DeepLab\bin\Debug\DeepLab.exe
+E:\dv\labyrinth\DeepLab\bin\Debug\DeepLab.pdb
+E:\dv\labyrinth\DeepLab\bin\Debug\Meshomatic.dll
+E:\dv\labyrinth\DeepLab\bin\Debug\OpenTK.dll
+E:\dv\labyrinth\DeepLab\bin\Debug\OpenTK.GLControl.dll
+E:\dv\labyrinth\DeepLab\obj\Debug\DeepLab.csproj.AssemblyReference.cache
+E:\dv\labyrinth\DeepLab\obj\Debug\DeepLab.csproj.CoreCompileInputs.cache
+E:\dv\labyrinth\DeepLab\obj\Debug\DeepLab.csproj.Up2Date
+E:\dv\labyrinth\DeepLab\obj\Debug\DeepLab.exe
+E:\dv\labyrinth\DeepLab\obj\Debug\DeepLab.pdb
