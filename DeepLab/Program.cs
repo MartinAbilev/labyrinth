@@ -57,6 +57,13 @@ namespace OglShel
                 set { pos.Y = value; }
             }
 
+            public Point Pos
+            {
+
+                get { return pos; }
+
+            }
+
             public Cell(int x, int y,int Depth)
             {
                 pos.X = x;
@@ -70,11 +77,25 @@ namespace OglShel
         public class Path : Math
         {
             Point start;
-            Point end;
+           
             int lenght;
             int depthLevel;
             int x;
             int y;
+
+            private Point End;
+
+            public Point end
+            {
+                get
+                {
+
+                    return End;
+
+                }
+
+
+            }
 
 
             public Cell[] cells;
@@ -98,8 +119,8 @@ namespace OglShel
                 lab = Lab;
 
                 createCell(Start, 0, DepthLevel);// pirma shuna
-                
-                for(int i=1; i <Lenght; i++)// taisam tik shunas cik ir dotais garums
+                int i = 1;
+                for(i=1; i <Lenght; i++)// taisam tik shunas cik ir dotais garums
                 {
                     Dir = rnd(0, 4);
                     int newX = 0;
@@ -197,15 +218,13 @@ namespace OglShel
                                     if (empty(new Point(newPos.X + 1, newPos.Y))) createCell(newPos, i, DepthLevel);// un vai nakama ari tuksha
                                     else i--;
                     }
-
                     
-
-
-                    
-
-
-
+                
                 }
+                End.X = cells[cells.Length-1].X;
+                End.Y = cells[cells.Length-1].Y;
+
+
 
             }
 
@@ -254,7 +273,9 @@ namespace OglShel
 
         Path PrimPath;
 
-        Path[] AllPath;
+        public Point End;
+
+        public Path[] AllPath;
 
         public Cell[] Lab;//  all  labyrynth together
 
@@ -291,6 +312,9 @@ namespace OglShel
             else Array.Resize(ref AllPath, AllPath.Length + 1);
 
             AllPath[AllPath.Length - 1] = PrimPath;// ierakstam pirmo celju kopejaa celju arayza
+
+            End = PrimPath.end;
+            
         }
 
 

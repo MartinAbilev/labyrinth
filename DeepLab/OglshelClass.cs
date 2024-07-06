@@ -62,6 +62,8 @@ namespace OglShel
             bool leftbutton = false;
             bool rightbutton = false;
 
+            bool helpmode = false;
+
         public GlWindow(DeepLab lab ,uint width, uint height)
             : base((int)width, (int)height)
         {
@@ -139,7 +141,7 @@ namespace OglShel
                 x -= deltaX * speed; y += deltaY * speed;
             }
             
-            z = 10f+(wheel*3);
+            z = -120f+(wheel*3);
 
             deltaX = 0; deltaY = 0;
 
@@ -355,7 +357,7 @@ namespace OglShel
             {
                 case MouseButton.Left:
                     leftbutton = false;
-                    Lab = new DeepLab();
+                    newLevel();
                     break;
 
                 case MouseButton.Middle:
@@ -376,6 +378,9 @@ namespace OglShel
         {
             wheel = e.Value;
 
+            if (wheel > 9) helpmode = true;
+            else helpmode = false;
+
             Console.WriteLine(wheel);
 
         }
@@ -391,7 +396,25 @@ namespace OglShel
 
             //Console.WriteLine("\n deltaX {0} deltaY {0}", deltaX, deltaY);
         }
+        bool inside(Point pos)
+        {
+            if (x/2 > pos.X - .5)
+                if (x/2 < pos.X + .5)
+                    if(y/2>pos.Y-.5)
+                        if (y / 2 < pos.Y + .5)
 
+                    return true;
+                return false;
+
+        }
+
+        void newLevel()
+        {
+            Lab = new DeepLab();
+            x = 0; y = 0;
+
+
+        }
         protected override void OnRenderFrame(FrameEventArgs e)// and finaly rendering
         {
 
@@ -403,17 +426,38 @@ namespace OglShel
             
             GL.PushMatrix();
             SetPerspectiveView();
+
+            GL.PushMatrix();
+            GL.Translate(new Vector3(Lab.End.X * 2 , Lab.End.Y * 2 , -120.0f));
+            if (inside(Lab.End))
+            {
+                Console.WriteLine("BLABLAAH  YOU WIN");
+                newLevel();
+
+
+            }
+            GL.Color3(0.0f, 1.0f, 0f);
+
+            DrawSprite3d();
+            GL.PopMatrix();
+
             for (int i = 0; i < Lab.Lab.Length; i++)
             {
                 GL.PushMatrix();
-                GL.Translate(new Vector3(Lab.Lab[i].X*2+.1f, Lab.Lab[i].Y*2+.1f , -120.0f));
-                
+                GL.Translate(new Vector3(Lab.Lab[i].X*2, Lab.Lab[i].Y*2 , -120.0f));
+
                 if (i == 0) GL.Color3(1.0f, 0f, 0f);
-                else GL.Color3(0f, 0f,1.0f- (1.0f/Lab.depth  )   * Lab.Lab[i].depth );
+                else
+                    if (helpmode) GL.Color3(0f, 0f, 1.0f - (1.0f / Lab.depth) * Lab.Lab[i].depth);
+                    else
+                        if (inside(Lab.Lab[i].Pos ) ) GL.Color3(0.0f, 0.0f, 0.5f);
+                        else
+                            GL.Color3(1.0f, 1.0f, 1.0f);
 
                 DrawSprite3d();
                 GL.PopMatrix();
             }
+            
             GL.PopMatrix();
             
             
