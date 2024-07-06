@@ -7,7 +7,9 @@ C:\Users\Martins\Documents\Visual Studio 2008\Projects\DeepLab\DeepLab\obj\Debug
 C:\Users\Martins\Documents\Visual Studio 2008\Projects\DeepLab\DeepLab\obj\Debug\DeepLab.exe
 C:\Users\Martins\Documents\Visual Studio 2008\Projects\DeepLab\DeepLab\obj\Debug\DeepLab.pdb
 C:\Users\Martins\Documents\Visual Studio 2008\Projects\DeepLab\DeepLab\bin\Debug\Asets\cell.png
+C:\Users\Martins\Documents\Visual Studio 2008\Projects\DeepLab\DeepLab\bin\Debug\Asets\cross.png
 E:\dv\labyrinth\DeepLab\bin\Debug\Asets\cell.png
+E:\dv\labyrinth\DeepLab\bin\Debug\Asets\cross.png
 E:\dv\labyrinth\DeepLab\bin\Debug\DeepLab.exe
 E:\dv\labyrinth\DeepLab\bin\Debug\DeepLab.pdb
 E:\dv\labyrinth\DeepLab\bin\Debug\Meshomatic.dll

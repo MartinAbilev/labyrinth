@@ -49,7 +49,7 @@ namespace OglShel
     {
         DeepLab Lab;
         double Time;
-        int texture;
+        int cellTexture,crossTexture;
 
         int wheel;
 
@@ -68,7 +68,8 @@ namespace OglShel
             : base((int)width, (int)height)
         {
             Lab = lab;
-            texture=LoadTexture(@"Asets\cell.png");
+            cellTexture=LoadTexture(@"Asets\cell.png");
+            crossTexture = LoadTexture(@"Asets\cross.png");
 
 
         }
@@ -136,7 +137,7 @@ namespace OglShel
         {
 
             float speed = 0.1f;
-            if (rightbutton)
+            if (rightbutton || leftbutton)
             {
                 x -= deltaX * speed; y += deltaY * speed;
             }
@@ -169,13 +170,13 @@ namespace OglShel
              
         }
 
-        void DrawSprite3d()
+        void DrawSprite3d(int Txt)
         {
          
 
 
 
-            GL.BindTexture(TextureTarget.Texture2D, texture);
+            GL.BindTexture(TextureTarget.Texture2D, Txt);
             GL.Enable(EnableCap.Texture2D);
             GL.Enable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
@@ -204,13 +205,13 @@ namespace OglShel
 
 
 
-        void DrawSprite2d()
+        void DrawSprite2d(int Txt)
         {
 
 
 
 
-            GL.BindTexture(TextureTarget.Texture2D, texture);
+            GL.BindTexture(TextureTarget.Texture2D, Txt);
             GL.Enable(EnableCap.Texture2D);
             GL.Enable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
@@ -357,7 +358,7 @@ namespace OglShel
             {
                 case MouseButton.Left:
                     leftbutton = false;
-                    newLevel();
+                    //newLevel();
                     break;
 
                 case MouseButton.Middle:
@@ -398,10 +399,10 @@ namespace OglShel
         }
         bool inside(Point pos)
         {
-            if (x/2 > pos.X - .5)
-                if (x/2 < pos.X + .5)
-                    if(y/2>pos.Y-.5)
-                        if (y / 2 < pos.Y + .5)
+            if (x/2 > pos.X - .6)
+                if (x/2 < pos.X + .6)
+                    if(y/2>pos.Y-.6)
+                        if (y / 2 < pos.Y + .6)
 
                     return true;
                 return false;
@@ -415,6 +416,22 @@ namespace OglShel
 
 
         }
+
+        bool faalout()
+        {
+
+            for (int i = 0; i < Lab.Lab.Length; i++)
+            {
+                if (inside(Lab.Lab[i].Pos)) return false;
+
+
+            }
+            return true;
+
+
+    
+        }
+
         protected override void OnRenderFrame(FrameEventArgs e)// and finaly rendering
         {
 
@@ -427,6 +444,8 @@ namespace OglShel
             GL.PushMatrix();
             SetPerspectiveView();
 
+            
+
             GL.PushMatrix();
             GL.Translate(new Vector3(Lab.End.X * 2 , Lab.End.Y * 2 , -120.0f));
             if (inside(Lab.End))
@@ -438,7 +457,7 @@ namespace OglShel
             }
             GL.Color3(0.0f, 1.0f, 0f);
 
-            DrawSprite3d();
+            DrawSprite3d(cellTexture);
             GL.PopMatrix();
 
             for (int i = 0; i < Lab.Lab.Length; i++)
@@ -454,9 +473,23 @@ namespace OglShel
                         else
                             GL.Color3(1.0f, 1.0f, 1.0f);
 
-                DrawSprite3d();
+                DrawSprite3d(cellTexture);
                 GL.PopMatrix();
             }
+
+            if (faalout())
+            {
+                Console.WriteLine("aarrg droop");
+                x = 0; y = 0;
+            }
+
+
+            GL.PushMatrix();
+
+            GL.Color4(0.0f, 0.0f, 0f, 0.1f);
+            GL.Translate(new Vector3(x, y, -119.5f));
+            DrawSprite3d(crossTexture);
+            GL.PopMatrix();
             
             GL.PopMatrix();
             
@@ -482,7 +515,7 @@ namespace OglShel
 
             GL.PushMatrix();
             SetScreenView();
-            DrawSprite2d();
+            DrawSprite2d(cellTexture);
             GL.PopMatrix();
             
 
