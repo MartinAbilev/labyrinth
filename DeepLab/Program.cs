@@ -195,7 +195,7 @@ namespace OglShel
                             if (empty(new Point(newPos.X, newPos.Y - 1)))
                                 if (empty(new Point(newPos.X - 1, newPos.Y )))
                                     if (empty(new Point(newPos.X + 1, newPos.Y))) createCell(newPos, i, DepthLevel);// un vai nakama ari tuksha
-
+                                    else i--;
                     }
 
                     
@@ -244,7 +244,7 @@ namespace OglShel
 
         }
 
-        int depth;
+        public  int depth;
         int lenght;
         int branching;
 
@@ -262,9 +262,9 @@ namespace OglShel
 
         public DeepLab()
         {
-            depth = 4;
-            lenght = 320;
-            branching = 4;
+            depth = 8;
+            lenght = 64;
+            branching = 8;
 
             PrimStart.X = 0;
             PrimStart.Y = 0;
@@ -293,6 +293,31 @@ namespace OglShel
             AllPath[AllPath.Length - 1] = PrimPath;// ierakstam pirmo celju kopejaa celju arayza
         }
 
+
+        void createSecPath(int Lenght)
+        {
+            for (int i = 0; i < depth; i++)// tik cik dziljuma
+            {
+                for (int n = 0; n < branching; n++)// tikcik sazarojas
+                {
+                    int startCellID = m.rnd(0, AllPath[i].cells.Length);
+
+                    Point startPos = new Point();
+
+                    startPos.X = AllPath[i].cells[startCellID].X;
+                    startPos.Y = AllPath[i].cells[startCellID].Y;
+
+                    Array.Resize(ref AllPath, AllPath.Length + 1);
+
+                    AllPath[AllPath.Length - 1] = new Path(Lab, startPos, i + 1, Lenght);
+                    Lab = AllPath[AllPath.Length - 1].lab;
+                }
+            }
+
+        }//sec branches
+        
+
+        /*
         void createSecPath(int Lenght)
         {
             for (int i = 0; i < depth; i++)// tik cik dziljuma
@@ -319,10 +344,8 @@ namespace OglShel
 
             }
 
-
-
-        }
-
+        }//sec branches
+        */
 
 
     }

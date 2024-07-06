@@ -409,7 +409,7 @@ namespace OglShel
                 GL.Translate(new Vector3(Lab.Lab[i].X*2+.1f, Lab.Lab[i].Y*2+.1f , -120.0f));
                 
                 if (i == 0) GL.Color3(1.0f, 0f, 0f);
-                else GL.Color3(0f, 0f, 0.005f+(0.1f*Lab.Lab[i].depth) );
+                else GL.Color3(0f, 0f,1.0f- (1.0f/Lab.depth  )   * Lab.Lab[i].depth );
 
                 DrawSprite3d();
                 GL.PopMatrix();
