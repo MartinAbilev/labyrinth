@@ -1,0 +1,9 @@
+C:\Users\Martins\Documents\Visual Studio 2008\Projects\DeepLab\DeepLab\bin\Debug\DeepLab.exe
+C:\Users\Martins\Documents\Visual Studio 2008\Projects\DeepLab\DeepLab\bin\Debug\DeepLab.pdb
+C:\Users\Martins\Documents\Visual Studio 2008\Projects\DeepLab\DeepLab\bin\Debug\Meshomatic.dll
+C:\Users\Martins\Documents\Visual Studio 2008\Projects\DeepLab\DeepLab\bin\Debug\OpenTK.dll
+C:\Users\Martins\Documents\Visual Studio 2008\Projects\DeepLab\DeepLab\bin\Debug\OpenTK.GLControl.dll
+C:\Users\Martins\Documents\Visual Studio 2008\Projects\DeepLab\DeepLab\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Martins\Documents\Visual Studio 2008\Projects\DeepLab\DeepLab\obj\Debug\DeepLab.exe
+C:\Users\Martins\Documents\Visual Studio 2008\Projects\DeepLab\DeepLab\obj\Debug\DeepLab.pdb
+C:\Users\Martins\Documents\Visual Studio 2008\Projects\DeepLab\DeepLab\bin\Debug\Asets\cell.png
